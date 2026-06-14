@@ -148,9 +148,36 @@ h1 .name-accent {
 }
 .stat-item { flex: 1; min-width: 120px; padding-right: 2rem; }
 .stat-item + .stat-item { padding-left: 2rem; border-left: 1px solid var(--border2); }
-.stat-num { font-family: var(--syne); font-size: 2.2rem; font-weight: 800;
-  background: linear-gradient(135deg, var(--violet-bright), var(--orange));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+.stat-num {
+  font-family: var(--syne);
+  font-size: 2.2rem;
+  font-weight: 800;
+
+  /* Fallback color */
+  color: #c084fc;
+
+  /* Soft glow */
+  text-shadow:
+      0 0 10px rgba(192,132,252,.35),
+      0 0 20px rgba(168,85,247,.15);
+}
+
+/* Gradient text for supported browsers */
+@supports (-webkit-background-clip: text) {
+  .stat-num {
+    background: linear-gradient(
+      135deg,
+      #d8b4fe 0%,
+      #c084fc 40%,
+      #fb923c 100%
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
 }
 .stat-label { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
 
